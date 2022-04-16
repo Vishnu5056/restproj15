@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,re_path
+from rest_framework.authtoken.views import obtain_auth_token
 from nestedserializerapp.views import MusiciansList,AlbumsList,MusiciansListById,AlbumsListById
 
 urlpatterns = [
+    re_path(r'^api_token_auth/', obtain_auth_token),
     path('admin/', admin.site.urls),
     re_path(r'^api/musicians/$', MusiciansList.as_view()),
     re_path(r'^api/albums/$', AlbumsList.as_view()),
